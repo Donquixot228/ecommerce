@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce/models/category_model.dart';
+import 'package:ecommerce/models/models.dart';
+
 import 'package:ecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -10,34 +11,51 @@ class HomeScreen extends StatelessWidget {
 
   static Route route() {
     return MaterialPageRoute(
-      settings: RouteSettings(name: routeName),
-      builder: (_) => HomeScreen(),
+      settings: const RouteSettings(name: routeName),
+      builder: (_) => const HomeScreen(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
-      bottomNavigationBar: CustomNavBarr(),
-      body: Container(
-        child: CarouselSlider(
-          options: CarouselOptions(
-            scrollPhysics: BouncingScrollPhysics(),
-            //tall image
-            aspectRatio: 1.5,
-            viewportFraction: 0.9,
-            //ао аокам чутка видно дрпугие фото
-            enlargeStrategy: CenterPageEnlargeStrategy.height,
-            enlargeCenterPage: true,
-            enableInfiniteScroll: false,
-            //INITIAL
-
-            //AUTOPLAY
+      appBar: const CustomAppBar(),
+      bottomNavigationBar: const CustomNavBarr(),
+      body: Column(
+        children: [
+          CarouselSlider(
+            options: CarouselOptions(
+              scrollPhysics: const BouncingScrollPhysics(),
+              //tall image
+              aspectRatio: 1.5,
+              scrollDirection: Axis.horizontal,
+              viewportFraction: 0.7,
+              //ао аокам чутка видно дрпугие фото
+              enlargeStrategy: CenterPageEnlargeStrategy.height,
+              enlargeCenterPage: true,
+              enableInfiniteScroll: false,
+              //INITIAL
+              initialPage: 1,
+              autoPlay: true,
+              //AUTOPLAY
+            ),
+            items: Category.categories
+                .map((category) => HeroCarouselCard(categoty: category))
+                .toList(),
           ),
-          items: Category.categories.map((category) =>
-              HeroCarouselCard(categoty: category)).toList(),
-        ),
+          const SelectionTitle(
+            title: 'New',
+          ),
+          ProductCarousel(
+              products:
+                  Product.products.where((product) => product.isNew).toList()),
+          const SelectionTitle(
+            title: 'Popular',
+          ),
+          ProductCarousel(
+              products:
+              Product.products.where((product) => product.isNew).toList()),
+        ],
       ),
     );
   }

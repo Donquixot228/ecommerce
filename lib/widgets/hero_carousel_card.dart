@@ -9,7 +9,8 @@ class HeroCarouselCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+
       child: ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(5.0)),
         child: Stack(
@@ -33,7 +34,7 @@ class HeroCarouselCard extends StatelessWidget {
                     end: Alignment.topCenter,
                   ),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 10.0),
                 child: Text(
                   categoty.name,
                   style: Theme.of(context).textTheme.headline2,
