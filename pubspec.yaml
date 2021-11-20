@@ -28,6 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider:
+  equatable:
   flutter:
     sdk: flutter
 
