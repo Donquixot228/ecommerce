@@ -29,7 +29,7 @@ class CustomNavBarr extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/user');
+                Navigator.pushNamed(context, '/');
               },
               icon: Icon(Icons.person,color: Colors.white,),
             ),

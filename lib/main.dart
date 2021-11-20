@@ -1,6 +1,6 @@
-
-
 import 'package:ecommerce/pages/screens.dart';
+import 'package:ecommerce/routes/app_router.dart';
+import 'package:ecommerce/theme/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: theme(),
+      onGenerateRoute: AppRouter.onGenerateRoute,
+      initialRoute: HomeScreen.routeName,
       home: HomeScreen(),
     );
   }
