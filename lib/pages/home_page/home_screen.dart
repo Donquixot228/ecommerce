@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
           ),
           ProductCarousel(
               products:
-              Product.products.where((product) => product.isNew).toList()),
+              Product.products.where((product) => product.isPopular).toList()),
         ],
       ),
     );

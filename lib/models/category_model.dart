@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 //EQUATABLE Если 2 объекта одного класса  и нужно их стравнить (==)
 // props проверяет по определенным параметрам
+//позволяет делать конструктор const
 
 class Category extends Equatable {
   final String name;
@@ -22,7 +23,7 @@ class Category extends Equatable {
       imaheUrl: 'https://assets.supremenewyork.com/216951/ma/FyvHihh0OTg.jpg',
     ),
     Category(
-      name: 'Sweathirt',
+      name: 'Sweatshirt',
       imaheUrl: 'https://assets.supremenewyork.com/219582/ma/NUIBEOiNxUE.jpg',
     ),
     Category(

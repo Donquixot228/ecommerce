@@ -79,6 +79,8 @@ flutter:
      - family: Supreme
        fonts:
          - asset: assets/fonts/Supreme/Supreme.otf
-
+     - family: CourierNew
+       fonts:
+         - asset: assets/fonts/CourierNew/CourierNew.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
