@@ -94,7 +94,9 @@ class ProductCard extends StatelessWidget {
                   isWishlist
                       ? Expanded(
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+
+                            },
                             icon: Icon(
                               Icons.delete,
                               color: Colors.white,

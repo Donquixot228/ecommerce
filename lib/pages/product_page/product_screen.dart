@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce/blocs/wishlist_bloc/wishlist_bloc.dart';
 import 'package:ecommerce/models/models.dart';
 import 'package:ecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductScreen extends StatelessWidget {
   final Product product;
@@ -23,46 +25,57 @@ class ProductScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: product.name,
       ),
+      //вынести
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(30),
-            topLeft: Radius.circular(30),
-          ),
+          borderRadius: BorderRadius.only(topRight: Radius.circular(300)),
           color: Colors.black,
+            gradient: LinearGradient(
+              colors: [
+                Colors.black,
+                Colors.black.withAlpha(50),
+              ],
+              begin:  Alignment.bottomLeft,
+              end: Alignment.topRight,
+            )
         ),
-        height: 50,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: Icon(
-                Icons.share,
-                color: Colors.white,
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                icon: Icon(
+                  Icons.share,
+                  color: Colors.white,
+                ),
+                onPressed: () {},
               ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(
-                Icons.favorite,
-                color: Colors.white,
+
+               IconButton(
+                    icon: Icon(
+                      Icons.favorite,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+
+                    },
+
               ),
-              onPressed: () {},
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(primary: Colors.white),
-              child: Text(
-                'ADD TO CART',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline1!
-                    .copyWith(fontSize: 25,color: Colors.black),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(primary: Colors.white),
+                child: Text(
+                  'ADD TO CART',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1!
+                      .copyWith(fontSize: 25, color: Colors.black),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+
       body: ListView(
         children: [
           CarouselSlider(
@@ -159,7 +172,7 @@ class ProductScreen extends StatelessWidget {
                 ListTile(
                   title: Text(
                     'Shiping time dependson your location. UK orders placed before 4pm will be delivered between 3-5 working days, central Europe within 5 business '
-                        'days and all other countries please allow up to 10 business days. Note these transit are estimates and may vary',
+                    'days and all other countries please allow up to 10 business days. Note these transit are estimates and may vary',
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ),

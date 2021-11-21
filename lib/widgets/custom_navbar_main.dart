@@ -11,9 +11,16 @@ class CustomNavBarr extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(30),
-          topLeft: Radius.circular(30),
+         
         ),
-        color: Colors.black,
+        gradient: LinearGradient(
+          colors: [
+            Colors.black,
+            Colors.black.withAlpha(50),
+          ],
+              begin:  Alignment.bottomLeft,
+                end: Alignment.topRight,
+        )
       ),
       height: 60,
       child: Row(
