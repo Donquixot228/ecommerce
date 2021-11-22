@@ -53,7 +53,7 @@ class CartScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      'Add \$200.0 for FREE Delivery',
+                      Cart().freeDeliveryFeeString,
                       style: Theme.of(context)
                           .textTheme
                           .headline2!
@@ -172,7 +172,7 @@ class CartScreen extends StatelessWidget {
                                 .copyWith(fontSize: 20),
                           ),
                           Text(
-                            '\$1.98',
+                            '\$${Cart().totalString}',
                             style: Theme.of(context)
                                 .textTheme
                                 .headline1!

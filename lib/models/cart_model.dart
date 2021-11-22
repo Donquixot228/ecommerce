@@ -14,24 +14,27 @@ double deliveryFee(subtotal){
     return 10.0;
 }
 
+double total(subtotal,deliveryFee){
+  return subtotal+deliveryFee(subtotal);
+}
 
 
 
-
+String freeDelivery(subtotal){
+  if(subtotal >= 200.0){
+    return 'You have Free Delivery';
+  }else{
+    double missing = 200.0 -subtotal;
+    return 'Add \$${missing.toStringAsFixed(2)} for FREE delivery';
+  }
+}
 String get subtotalString => subtotal.toStringAsFixed(2);
 String get deliveryFeeString => deliveryFee(subtotal).toStringAsFixed(2);
+String get freeDeliveryFeeString =>freeDelivery(subtotal);
+String get totalString => total(subtotal,deliveryFee).toStringAsFixed(2);
 
 List<Product> products= [
-  const Product(
-    name: 'Chino Pant Butterflies',
-    category: 'Pants',
-    imageUrl: 'https://assets.supremenewyork.com/217414/ma/GGOI0HGGt2w.jpg',
-    price: 148,
-    isNew: true,
-    isPopular: true,
-    isRecommended: true,
 
-  ),
   const Product(
     name: 'Chino Pant Black',
     category: 'Pants',

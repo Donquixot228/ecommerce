@@ -19,14 +19,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      return
-       //MultiBlocProvider(providers: [ BlocProvider(create:(_)=> WishlistBloc()..add(StartWishlist()))],
-    //   child:
+       //MultiBlocProvider(providers: [ BlocProvider(create:(_)=> WishlistBloc()..add(WishlistStarted()))],
+      //child:
       MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
         initialRoute: HomeScreen.routeName,
-    );
+
+     );
   }
 }
