@@ -1,4 +1,6 @@
 import 'package:ecommerce/blocs/cart/cart_bloc.dart';
+import 'package:ecommerce/blocs/wishlist_bloc/wishlist_bloc.dart';
+import 'package:ecommerce/blocs/wishlist_bloc/wishlist_bloc.dart';
 import 'package:ecommerce/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -92,7 +94,9 @@ class ProductCard extends StatelessWidget {
                         return Expanded(
                           child: IconButton(
                             onPressed: () {
-                              context.read<CartBloc>().add(CartProductAdded(product));
+                              context
+                                  .read<CartBloc>()
+                                  .add(CartProductAdded(product));
                             },
                             icon: Icon(
                               Icons.add_circle,
@@ -107,15 +111,21 @@ class ProductCard extends StatelessWidget {
                     },
                   ),
                   isWishlist
-                      ? Expanded(
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.delete,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          ),
+                      ? BlocBuilder<WishlistBloc, WishlistState>(
+                          builder: (context, state) {
+                            return Expanded(
+                              child: IconButton(
+                                onPressed: () {
+                                  context.read<WishlistBloc>().add(RemoveWishlistProduct(product));
+                                },
+                                icon: Icon(
+                                  Icons.delete,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                              ),
+                            );
+                          },
                         )
                       : SizedBox(),
                 ],

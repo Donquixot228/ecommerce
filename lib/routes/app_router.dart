@@ -12,6 +12,8 @@ class AppRouter {
         return HomeScreen.route();
       case HomeScreen.routeName:
         return HomeScreen.route();
+      case SplashScreen.routeName:
+        return SplashScreen.route();
       case CartScreen.routeName:
         return CartScreen.route();
       case ProductScreen.routeName:
@@ -20,10 +22,6 @@ class AppRouter {
         return WishlistScreen.route();
       case CatalogScreen.routeName:
         return CatalogScreen.route(category: settings.arguments as Category);
-
-
-
-
 
       default:
         return _errorRoute();
