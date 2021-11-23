@@ -8,6 +8,8 @@ abstract class WishlistState extends Equatable {
 
 
 
+class WishlistDefault extends WishlistState{}
+
 
 class WishlistLoading extends WishlistState {}
 

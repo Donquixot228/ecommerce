@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ecommerce/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +17,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    Timer(Duration(seconds: 2), ()=> Navigator.pushNamed(context, '/'));
     return Scaffold(
       backgroundColor: Color(0xFFED1C24),
          body: Column(

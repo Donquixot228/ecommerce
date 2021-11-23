@@ -9,51 +9,50 @@ part 'wishlist_event.dart';
 part 'wishlist_state.dart';
 
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
-  WishlistBloc() : super(WishlistLoading());
-
-  @override
-  Stream<WishlistState> mapEventToState(WishlistEvent event) async* {
-    if (event is StartWishlist) {
-      yield* _mapStartWishlistToState();
-    } else if (event is AddWishlistProduct) {
-      yield* _mapAddWishlistProductToState(event, state);
-    } else if (event is RemoveWishlistProduct) {
-      yield* _mapRemoveWishlistProductToState(event, state);
-    }
+  WishlistBloc() : super(WishlistDefault()) {
+    on<StartWishlist>(_wishListLoad);
+    on<AddWishlistProduct>(
+        (event, CartState) => _WishlistProductAddedToState(event, state));
+    on<RemoveWishlistProduct>(
+        (event, CartState) => _WishlistProductRemovedToState(event, state));
   }
 
-  Stream<WishlistState> _mapStartWishlistToState() async* {
-    yield WishlistLoading();
+  Future<void> _wishListLoad(
+      StartWishlist event, Emitter<WishlistState> emit) async {
+    emit(WishlistLoading());
     try {
       await Future<void>.delayed(Duration(seconds: 1));
-      yield const WishlistLoaded();
+      emit(
+        WishlistLoaded(),
+      );
     } catch (_) {}
   }
 
-  Stream<WishlistState> _mapAddWishlistProductToState(
-    AddWishlistProduct event,
-    WishlistState state,
-  ) async* {
+  Future<void> _WishlistProductAddedToState(
+      AddWishlistProduct event, WishlistState state) async {
     if (state is WishlistLoaded) {
       try {
-        yield WishlistLoaded(
-          wishlist: Wishlist(
-            products: List.from(state.wishlist.products)..add(event.product),
+        emit(
+          WishlistLoaded(
+            wishlist: Wishlist(
+              products: List.from(state.wishlist.products)..add(event.product),
+            ),
           ),
         );
       } catch (_) {}
     }
   }
 
-  Stream<WishlistState> _mapRemoveWishlistProductToState(
-    RemoveWishlistProduct event,
-    WishlistState state,
-  ) async* {
+  Future<void> _WishlistProductRemovedToState(
+      RemoveWishlistProduct event, WishlistState state) async {
     if (state is WishlistLoaded) {
       try {
-        yield WishlistLoaded(
-          wishlist: Wishlist(
-            products: List.from(state.wishlist.products)..remove(event.product),
+        emit(
+          WishlistLoaded(
+            wishlist: Wishlist(
+              products: List.from(state.wishlist.products)
+                ..remove(event.product),
+            ),
           ),
         );
       } catch (_) {}

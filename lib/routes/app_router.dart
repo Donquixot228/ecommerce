@@ -23,10 +23,6 @@ class AppRouter {
       case CatalogScreen.routeName:
         return CatalogScreen.route(category: settings.arguments as Category);
 
-
-
-
-
       default:
         return _errorRoute();
     }

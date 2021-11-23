@@ -50,12 +50,34 @@ class ProductScreen extends StatelessWidget {
               ),
               onPressed: () {},
             ),
-            IconButton(
-              icon: Icon(
-                Icons.favorite,
-                color: Colors.white,
-              ),
-              onPressed: () {},
+            BlocBuilder<WishlistBloc, WishlistState>(
+              builder: (context, state) {
+                return IconButton(
+                  icon: Icon(
+                    Icons.favorite,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    context.read<WishlistBloc>().add(AddWishlistProduct(product));
+                    final snackBar = SnackBar(
+                      content: Text('Added to your favorite'),
+                      duration: Duration(seconds: 1),
+                      action: SnackBarAction(
+                        label: '',
+                        textColor: Colors.white,
+                        onPressed: () {},
+                      ),
+                      behavior: SnackBarBehavior.floating,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      backgroundColor: Colors.blue,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+                  },
+                );
+              },
             ),
             BlocBuilder<CartBloc, CartState>(
               builder: (context, state) {
