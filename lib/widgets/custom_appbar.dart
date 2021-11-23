@@ -17,11 +17,16 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       title: Align(
         alignment: Alignment.center,
         child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(30),
+            ),
+            color: AppColors.supremeColor,
+          ),
           padding: EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 10,
           ),
-          color: AppColors.supremeColor,
           child: Text(
             title, style: Theme.of(context).textTheme.headline1, //!.copywith()
           ),
@@ -44,5 +49,5 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(50);
+  Size get preferredSize => Size.fromHeight(60);
 }

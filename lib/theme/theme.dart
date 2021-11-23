@@ -23,8 +23,15 @@ TextTheme textTheme() {
     ),
     bodyText1: TextStyle(
       color: Colors.black,
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: FontWeight.normal,
+      fontFamily: 'CourierNew',
+    ),
+    bodyText2: TextStyle(
+      color: Colors.black,
+      fontSize: 15,
+      fontWeight: FontWeight.bold,
+      fontFamily: 'CourierNew'
     ),
   );
 }
