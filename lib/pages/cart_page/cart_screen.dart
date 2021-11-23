@@ -63,7 +63,7 @@ class CartScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            Cart().freeDeliveryFeeString,
+                            state.cart.freeDeliveryFeeString,
                             style: Theme.of(context)
                                 .textTheme
                                 .headline2!
@@ -93,12 +93,13 @@ class CartScreen extends StatelessWidget {
                       ),
                       SizedBox(
                         height: 400,
+
                         child: ListView.builder(
                             physics: BouncingScrollPhysics(),
-                            itemCount: Cart().products.length,
+                            itemCount: state.cart.products.length,
                             itemBuilder: (context, index) {
                               return CartProductCard(
-                                product: Cart().products[index],
+                                product: state.cart.products[index],
                               );
                             }),
                       ),
@@ -147,7 +148,7 @@ class CartScreen extends StatelessWidget {
                                       .copyWith(fontSize: 20),
                                 ),
                                 Text(
-                                  '\$${Cart().deliveryFeeString}',
+                                  '\$${state.cart.deliveryFeeString}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline2!
@@ -182,7 +183,7 @@ class CartScreen extends StatelessWidget {
                                       .copyWith(fontSize: 20),
                                 ),
                                 Text(
-                                  '\$${Cart().totalString}',
+                                  '\$${state.cart.totalString}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline1!
