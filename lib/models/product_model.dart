@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
@@ -9,7 +10,6 @@ class Product extends Equatable {
   final bool isRecommended;
   final bool isPopular;
 
-
   const Product({
     required this.name,
     required this.category,
@@ -18,8 +18,20 @@ class Product extends Equatable {
     required this.isNew,
     required this.isRecommended,
     required this.isPopular,
-
   });
+
+  static Product fromSnapshot(DocumentSnapshot snap) {
+    Product product = Product(
+      name: snap['name'],
+      imageUrl: snap['imageUrl'],
+      category: snap['category'],
+      isNew: snap['isNew'],
+      isPopular: snap['isPopular'],
+      isRecommended: snap['isRecommended'],
+      price: snap['price'],
+    );
+    return product;
+  }
 
   static List<Product> products = [
     const Product(
@@ -30,7 +42,6 @@ class Product extends Equatable {
       isNew: true,
       isPopular: true,
       isRecommended: true,
-
     ),
     const Product(
       name: 'Chino Pant Black',
@@ -58,7 +69,6 @@ class Product extends Equatable {
       isNew: false,
       isPopular: false,
       isRecommended: false,
-
     ),
     const Product(
       name: ' Sweatshirt Yellow',
@@ -105,7 +115,6 @@ class Product extends Equatable {
       isPopular: false,
       isRecommended: false,
     ),
-
     const Product(
       name: 'Corduroy Jacket Blue',
       category: 'Jacket',
@@ -115,7 +124,6 @@ class Product extends Equatable {
       isPopular: true,
       isRecommended: true,
     ),
-
     const Product(
       name: 'Corduroy Jacket Black',
       category: 'Jacket',
@@ -143,7 +151,6 @@ class Product extends Equatable {
       isPopular: true,
       isRecommended: false,
     ),
-
     const Product(
       name: 'Pullover Pink',
       category: 'Pullover',
@@ -153,7 +160,6 @@ class Product extends Equatable {
       isPopular: false,
       isRecommended: false,
     ),
-
     const Product(
       name: 'Pullover Teal',
       category: 'Pullover',
@@ -181,23 +187,7 @@ class Product extends Equatable {
       isPopular: false,
       isRecommended: false,
     ),
-
-
   ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   @override
   // TODO: implement props

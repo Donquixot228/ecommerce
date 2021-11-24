@@ -28,8 +28,14 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider:
-  flutter_bloc:
+  flutter_bloc: ^8.0.0
   equatable:
+  firebase_core:
+  firebase_auth:
+  firebase_storage:
+  firebase_database:
+  cloud_firestore: ^3.1.0
+
   flutter:
     sdk: flutter
 
