@@ -97,6 +97,21 @@ class ProductCard extends StatelessWidget {
                               context
                                   .read<CartBloc>()
                                   .add(CartProductAdded(product));
+                              final snackBar = SnackBar(
+                                content: Text('Added to cart'),
+                                duration: Duration(seconds: 1),
+                                action: SnackBarAction(
+                                  label: '',
+                                  textColor: Colors.white,
+                                  onPressed: () {},
+                                ),
+                                behavior: SnackBarBehavior.floating,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
+                                backgroundColor: Colors.blue,
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(snackBar);
                             },
                             icon: Icon(
                               Icons.add_circle,

@@ -1,3 +1,5 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 //EQUATABLE Если 2 объекта одного класса  и нужно их стравнить (==)
@@ -13,9 +15,21 @@ class Category extends Equatable {
     required this.imaheUrl,
   });
 
+
+
   @override
-  // TODO: implement props
-  List<Object?> get props => [name, imaheUrl];
+  List<Object?> get props => [
+        name,
+        imaheUrl,
+      ];
+
+
+  static Category fromSnapshot(DocumentSnapshot snap){
+    Category category= Category(name: snap['name'], imaheUrl: snap['imageUrl']);
+    return category;
+  }
+
+
 
   static List<Category> categories = [
     Category(

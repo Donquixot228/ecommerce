@@ -164,7 +164,7 @@ class ProductScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: ExpansionTile(
-              initiallyExpanded: true,
+              initiallyExpanded: false,
               title: Text(
                 'Product information',
                 style: Theme.of(context)
@@ -185,7 +185,7 @@ class ProductScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: ExpansionTile(
-              initiallyExpanded: true,
+              initiallyExpanded: false,
               title: Text(
                 'Delivery information',
                 style: Theme.of(context)
