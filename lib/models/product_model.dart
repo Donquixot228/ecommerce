@@ -5,7 +5,7 @@ class Product extends Equatable {
   final String name;
   final String category;
   final String imageUrl;
-  final double price;
+  final num price;
   final bool isNew;
   final bool isRecommended;
   final bool isPopular;
@@ -38,7 +38,7 @@ class Product extends Equatable {
       name: 'Chino Pant Butterflies',
       category: 'Pants',
       imageUrl: 'https://assets.supremenewyork.com/217414/ma/GGOI0HGGt2w.jpg',
-      price: 148,
+      price: 148.0,
       isNew: true,
       isPopular: true,
       isRecommended: true,
@@ -47,7 +47,7 @@ class Product extends Equatable {
       name: 'Chino Pant Black',
       category: 'Pants',
       imageUrl: 'https://assets.supremenewyork.com/217412/ma/9wU8Gl-LaRw.jpg',
-      price: 148,
+      price: 148.0,
       isNew: false,
       isPopular: false,
       isRecommended: true,
@@ -56,7 +56,7 @@ class Product extends Equatable {
       name: 'Chino Pant Navy',
       category: 'Pants',
       imageUrl: 'https://assets.supremenewyork.com/217415/ma/gUqHVRRJJjI.jpg',
-      price: 148,
+      price: 148.0,
       isNew: false,
       isPopular: true,
       isRecommended: true,
@@ -148,7 +148,7 @@ class Product extends Equatable {
       imageUrl: 'https://assets.supremenewyork.com/216951/ma/FyvHihh0OTg.jpg',
       price: 238,
       isNew: true,
-      isPopular: true,
+      isPopular: false,
       isRecommended: false,
     ),
     const Product(

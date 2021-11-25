@@ -1,5 +1,7 @@
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce/blocs/category/category_bloc.dart';
+import 'package:ecommerce/blocs/product/product_bloc.dart';
 import 'package:ecommerce/models/models.dart';
 
 import 'package:ecommerce/widgets/widgets.dart';
@@ -28,7 +30,6 @@ class HomeScreen extends StatelessWidget {
           BlocBuilder<CategoryBloc, CategoryState>(
             builder: (context, state) {
               if (state is CategoryLoading) {
-
                 return Center(
                   child: CircularProgressIndicator(),
                 );
@@ -62,16 +63,49 @@ class HomeScreen extends StatelessWidget {
           const SelectionTitle(
             title: 'New',
           ),
-          ProductCarousel(
-              products:
-                  Product.products.where((product) => product.isNew).toList()),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if(state is ProductLoaded){
+                return ProductCarousel(
+                    products: state.products
+                        .where((product) => product.isNew)
+                        .toList());
+              }
+              else{
+                return Text("Something went wrong");
+              }
+            },
+          ),
           const SelectionTitle(
             title: 'Popular',
           ),
-          ProductCarousel(
-              products: Product.products
-                  .where((product) => product.isPopular)
-                  .toList()),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if(state is ProductLoaded){
+                return ProductCarousel(
+                    products: state.products
+                        .where((product) => product.isPopular)
+                        .toList());
+              }
+              else{
+                return Text("Something went wrong");
+              }
+            },
+          ),
+          // ProductCarousel(
+          //     products: Product.products
+          //         .where((product) => product.isPopular)
+          //         .toList()),
         ],
       ),
     );

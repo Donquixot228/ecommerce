@@ -1,8 +1,10 @@
 import 'package:ecommerce/blocs/cart/cart_bloc.dart';
 import 'package:ecommerce/blocs/category/category_bloc.dart';
+import 'package:ecommerce/blocs/product/product_bloc.dart';
 import 'package:ecommerce/blocs/wishlist_bloc/wishlist_bloc.dart';
 import 'package:ecommerce/pages/screens.dart';
 import 'package:ecommerce/repositories/category/category_repository.dart';
+import 'package:ecommerce/repositories/product/product_repository.dart';
 import 'package:ecommerce/routes/app_router.dart';
 import 'package:ecommerce/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,8 +29,17 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => CartBloc()..add(CartStarted())),
         BlocProvider(create: (_) => WishlistBloc()..add(StartWishlist())),
         BlocProvider(
-            create: (_) =>
-                CategoryBloc(categoryRepository: CategoryRepository())..add(LoadCategories())),
+          create: (_) => CategoryBloc(categoryRepository: CategoryRepository())
+            ..add(
+              LoadCategories(),
+            ),
+        ),
+        BlocProvider(
+          create: (_) => ProductBloc(productRepository: ProductRepository())
+            ..add(
+              LoadCProducts(),
+            ),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
