@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                         .toList());
               }
               else{
-                return Text("Something went wrong");
+                return Text("Smething went wrong");
               }
             },
           ),
