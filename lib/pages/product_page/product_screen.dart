@@ -6,6 +6,8 @@ import 'package:ecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'widgets/caustom_navbar_product.dart';
+
 class ProductScreen extends StatelessWidget {
   final Product product;
 
@@ -27,79 +29,7 @@ class ProductScreen extends StatelessWidget {
         title: product.name,
       ),
       //вынести
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(topRight: Radius.circular(300)),
-            color: Colors.black,
-            gradient: LinearGradient(
-              colors: [
-                Colors.black,
-                Colors.black.withAlpha(50),
-              ],
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-            )),
-        height: 50,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: Icon(
-                Icons.share,
-                color: Colors.white,
-              ),
-              onPressed: () {},
-            ),
-            BlocBuilder<WishlistBloc, WishlistState>(
-              builder: (context, state) {
-                return IconButton(
-                  icon: Icon(
-                    Icons.favorite,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    context.read<WishlistBloc>().add(AddWishlistProduct(product));
-                    final snackBar = SnackBar(
-                      content: Text('Added to your favorite'),
-                      duration: Duration(seconds: 1),
-                      action: SnackBarAction(
-                        label: '',
-                        textColor: Colors.white,
-                        onPressed: () {},
-                      ),
-                      behavior: SnackBarBehavior.floating,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      backgroundColor: Colors.blue,
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-                  },
-                );
-              },
-            ),
-            BlocBuilder<CartBloc, CartState>(
-              builder: (context, state) {
-                return ElevatedButton(
-                  onPressed: () {
-                    context.read<CartBloc>().add(CartProductAdded(product));
-                    Navigator.pushNamed(context, '/cart');
-                  },
-                  style: ElevatedButton.styleFrom(primary: Colors.white),
-                  child: Text(
-                    'ADD TO CART',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline1!
-                        .copyWith(fontSize: 25, color: Colors.black),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: NavBarProduct(product: product),
 
       body: ListView(
         children: [
@@ -209,3 +139,4 @@ class ProductScreen extends StatelessWidget {
     );
   }
 }
+

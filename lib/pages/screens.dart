@@ -5,3 +5,4 @@ export 'product_page/product_screen.dart';
 export 'catalog_page/catalog_screen.dart';
 export 'home_page/widgets/selection_title.dart';
 export 'splash_page/splash_screen.dart';
+export 'checkout_page/checkout_screen.dart';
