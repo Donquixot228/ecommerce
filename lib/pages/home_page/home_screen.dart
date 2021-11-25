@@ -27,7 +27,8 @@ class HomeScreen extends StatelessWidget {
         children: [
           BlocBuilder<CategoryBloc, CategoryState>(
             builder: (context, state) {
-              if (state is CategoryInitial) {
+              if (state is CategoryLoading) {
+
                 return Center(
                   child: CircularProgressIndicator(),
                 );
