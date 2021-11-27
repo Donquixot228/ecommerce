@@ -4,7 +4,7 @@ import 'package:ecommerce/models/product_model.dart';
 import 'package:equatable/equatable.dart';
 
 class Checkout extends Equatable {
-  final String? fulName;
+  final String? fullName;
   final String? email;
   final String? address;
   final String? city;
@@ -16,7 +16,7 @@ class Checkout extends Equatable {
   final String? total;
 
   const Checkout({
-    required this.fulName,
+    required this.fullName,
     required this.email,
     required this.address,
     required this.city,
@@ -30,7 +30,7 @@ class Checkout extends Equatable {
 
   @override
   List<Object?> get props => [
-        fulName,
+        fullName,
         email,
         address,
         city,
@@ -42,5 +42,22 @@ class Checkout extends Equatable {
         total,
       ];
 
+  Map<String, Object> toDocument() {
+    Map customerAddress = Map();
 
+    customerAddress['address'] = address;
+    customerAddress['city'] = city;
+    customerAddress['country'] = country;
+    customerAddress['zipCode'] = zipCode;
+
+    return {
+      'customerAddress': customerAddress,
+      'customerName': fullName!,
+      'customerEmail': email!,
+      'products': products!.map((product) => product.name).toList(),
+      'subtotal': subtotal!,
+      'deliveryFee': deliveryFee!,
+      'total': total!,
+    };
+  }
 }
