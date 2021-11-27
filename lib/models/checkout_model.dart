@@ -1,4 +1,4 @@
-import 'dart:html';
+
 
 import 'package:ecommerce/models/product_model.dart';
 import 'package:equatable/equatable.dart';
@@ -42,7 +42,7 @@ class Checkout extends Equatable {
         total,
       ];
 
-  Map<String, Object> toDocument() {
+  Map<String, Object?> toDocument() {
     Map customerAddress = Map();
 
     customerAddress['address'] = address;
@@ -52,12 +52,12 @@ class Checkout extends Equatable {
 
     return {
       'customerAddress': customerAddress,
-      'customerName': fullName!,
-      'customerEmail': email!,
+      'customerName': fullName,
+      'customerEmail': email,
       'products': products!.map((product) => product.name).toList(),
-      'subtotal': subtotal!,
-      'deliveryFee': deliveryFee!,
-      'total': total!,
+      'subtotal': subtotal,
+      'deliveryFee': deliveryFee,
+      'total': total,
     };
   }
 }

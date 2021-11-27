@@ -1,9 +1,11 @@
 import 'package:ecommerce/blocs/cart/cart_bloc.dart';
 import 'package:ecommerce/blocs/category/category_bloc.dart';
+import 'package:ecommerce/blocs/checkout/checkout_bloc.dart';
 import 'package:ecommerce/blocs/product/product_bloc.dart';
 import 'package:ecommerce/blocs/wishlist_bloc/wishlist_bloc.dart';
 import 'package:ecommerce/pages/screens.dart';
 import 'package:ecommerce/repositories/category/category_repository.dart';
+import 'package:ecommerce/repositories/checkout_repository/checkout_repository.dart';
 import 'package:ecommerce/repositories/product/product_repository.dart';
 import 'package:ecommerce/routes/app_router.dart';
 import 'package:ecommerce/theme/theme.dart';
@@ -30,15 +32,17 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => WishlistBloc()..add(StartWishlist())),
         BlocProvider(
           create: (_) => CategoryBloc(categoryRepository: CategoryRepository())
-            ..add(
-              LoadCategories(),
-            ),
+            ..add(LoadCategories()),
         ),
         BlocProvider(
           create: (_) => ProductBloc(productRepository: ProductRepository())
-            ..add(
-              LoadCProducts(),
-            ),
+            ..add(LoadCProducts()),
+        ),
+        BlocProvider(
+          create: (context) => CheckoutBloc(
+            cartBloc: context.read<CartBloc>(),
+            checkoutRepository: CheckoutRepository(),
+          ),
         ),
       ],
       child: MaterialApp(
@@ -46,7 +50,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: CheckoutScreen.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }
