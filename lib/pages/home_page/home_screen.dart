@@ -28,7 +28,6 @@ class HomeScreen extends StatelessWidget {
           BlocBuilder<CategoryBloc, CategoryState>(
             builder: (context, state) {
               if (state is CategoryLoading) {
-
                 return Center(
                   child: CircularProgressIndicator(),
                 );
@@ -38,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                   options: CarouselOptions(
                     scrollPhysics: const BouncingScrollPhysics(),
                     //tall image
-                    aspectRatio: 1.5,
+                    aspectRatio: 1.7,
                     scrollDirection: Axis.horizontal,
                     viewportFraction: 0.7,
                     //ао аокам чутка видно дрпугие фото

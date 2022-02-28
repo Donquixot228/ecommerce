@@ -92,7 +92,7 @@ class CartScreen extends StatelessWidget {
                         height: 10,
                       ),
                       SizedBox(
-                        height: 400,
+                        height: 300,
                         child: ListView.builder(
                             physics: BouncingScrollPhysics(),
                             itemCount: state.cart

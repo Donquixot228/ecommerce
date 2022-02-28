@@ -16,20 +16,16 @@ class Category extends Equatable {
   });
 
 
-
   @override
   List<Object?> get props => [
         name,
         imaheUrl,
       ];
 
-
   static Category fromSnapshot(DocumentSnapshot snap){
     Category category= Category(name: snap['name'], imaheUrl: snap['imageUrl']);
     return category;
   }
-
-
 
   static List<Category> categories = [
     Category(
